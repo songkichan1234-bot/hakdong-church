@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>기독교대한성결교회 학동교회</title>
-  <!-- Pretendard 폰트 로드 -->
+  <!-- Pretendard & 감성 손글씨 폰트(Nanum Myeongjo, Gowun Batang) 로드 -->
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;750&family=Nanum+Myeongjo:wght@700;800&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -14,6 +15,7 @@
       --text-main: #1f2937;
       --text-muted: #4b5563;
       --bg-light: #f8fafc;
+      --paper-bg: #fcfaf5;
       --white: #ffffff;
     }
 
@@ -187,32 +189,68 @@
       text-decoration: none;
       font-size: 0.95rem;
     }
-    .drawer-content a:active { color: var(--primary-color); font-weight: bold; }
 
-    /* 메인 비주얼 배너 */
+    /* 메인 히어로 배너 (제출해주신 비전 이미지 디자인 적용) */
     .hero-banner {
-      background: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.65)),
-                  url('https://images.unsplash.com/photo-1548625361-195fe578ee66?w=1600&q=80') center/cover no-repeat;
-      color: var(--white);
+      background-color: var(--paper-bg);
+      background-image: radial-gradient(#e5e0d8 1px, transparent 1px);
+      background-size: 20px 20px;
+      border-bottom: 1px solid #ebdccb;
+      padding: 4.5rem 1.5rem;
       text-align: center;
-      padding: 5.5rem 1.5rem;
+      position: relative;
     }
-    .hero-banner h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 1rem; letter-spacing: -0.5px; }
-    .hero-banner p { font-size: 1.1rem; max-width: 600px; margin: 0 auto 1.5rem; opacity: 0.95; word-break: keep-all; }
+    .hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .hero-sub-title {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.15rem;
+      color: var(--secondary-color);
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 0.8rem;
+    }
+    .hero-main-slogan {
+      font-family: 'Nanum Myeongjo', serif;
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 1.2rem;
+      letter-spacing: -1px;
+      line-height: 1.3;
+    }
+    .hero-verse {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.15rem;
+      color: #4b5563;
+      margin: 1rem auto 2rem;
+      line-height: 1.8;
+      max-width: 650px;
+      word-break: keep-all;
+    }
+    .hero-verse-cite {
+      display: block;
+      font-size: 0.95rem;
+      color: #6b7280;
+      margin-top: 0.5rem;
+    }
     .hero-btn-group { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
     .hero-btn {
       display: inline-block;
-      padding: 0.75rem 1.5rem;
+      padding: 0.75rem 1.6rem;
       border-radius: 30px;
       font-weight: 600;
       text-decoration: none;
       font-size: 0.95rem;
       transition: 0.2s;
     }
-    .btn-primary { background: var(--secondary-color); color: var(--white); }
-    .btn-primary:hover { background: #b45309; }
-    .btn-outline { border: 2px solid var(--white); color: var(--white); }
-    .btn-outline:hover { background: var(--white); color: var(--text-main); }
+    .btn-primary { background: var(--primary-color); color: var(--white); }
+    .btn-primary:hover { background: #172554; }
+    .btn-outline { border: 1px solid var(--primary-color); color: var(--primary-color); background: #fff; }
+    .btn-outline:hover { background: #f1f5f9; }
 
     /* 사역 둘러보기 그리드 */
     .section-container { max-width: 1200px; margin: 0 auto; padding: 4rem 1.5rem; }
@@ -240,7 +278,7 @@
     .card-body h3 { font-size: 1.1rem; margin: 0.3rem 0 0.5rem; color: var(--text-main); }
     .card-body p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; }
 
-    /* 교회 정보 안내 박스 */
+    /* 교회 정보 안내 박스 (사역 둘러보기 바로 밑으로 배치) */
     .info-section {
       background-color: var(--bg-light);
       border-top: 1px solid #e2e8f0;
@@ -259,6 +297,7 @@
       padding: 2rem;
       border-radius: 12px;
       border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
     .info-card h3 {
       font-size: 1.2rem;
@@ -269,7 +308,7 @@
       gap: 8px;
     }
     .info-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
-    .info-table td { padding: 0.5rem 0; border-bottom: 1px dashed #e2e8f0; }
+    .info-table td { padding: 0.6rem 0; border-bottom: 1px dashed #e2e8f0; }
     .info-table td:last-child { text-align: right; font-weight: 600; color: var(--primary-color); }
     .address-box p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.6rem; }
     .address-box strong { color: var(--text-main); }
@@ -278,7 +317,7 @@
       margin-top: 0.5rem;
       color: var(--primary-color);
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       text-decoration: none;
     }
 
@@ -313,8 +352,8 @@
     @media (max-width: 850px) {
       .desktop-menu { display: none; }
       .hamburger-btn { display: flex; }
-      .hero-banner h1 { font-size: 1.7rem; }
-      .hero-banner p { font-size: 0.95rem; }
+      .hero-main-slogan { font-size: 2rem; }
+      .hero-verse { font-size: 1rem; }
       .section-container { padding: 3rem 1.2rem; }
     }
   </style>
@@ -346,18 +385,18 @@
           <a href="#ministry-nextgen">교회사역</a>
           <ul class="dropdown-content">
             <li><a href="#ministry-nextgen">다음세대</a></li>
-            <li><a href="#ministry-cell">구역모임</a></li>
             <li><a href="#ministry-train">양육훈련</a></li>
             <li><a href="#ministry-mission">전도및선교</a></li>
+            <li><a href="#ministry-cell">구역모임</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a href="#news">교회소식</a>
+          <a href="#gallery">교회소식</a>
           <ul class="dropdown-content">
-            <li><a href="#news">주보보기</a></li>
-            <li><a href="#news">교회소식</a></li>
+            <li><a href="#gallery">주보보기</a></li>
+            <li><a href="#gallery">교회소식</a></li>
             <li><a href="#gallery">갤러리</a></li>
-            <li><a href="#news">자료실</a></li>
+            <li><a href="#gallery">자료실</a></li>
           </ul>
         </li>
       </ul>
@@ -395,28 +434,37 @@
       <a href="#ministry-cell" class="drawer-link">구역모임</a>
 
       <p class="drawer-cat">교회소식</p>
-      <a href="#news" class="drawer-link">주보보기</a>
-      <a href="#news" class="drawer-link">교회소식 및 공지</a>
+      <a href="#gallery" class="drawer-link">주보보기</a>
+      <a href="#gallery" class="drawer-link">교회소식 및 공지</a>
       <a href="#gallery" class="drawer-link">갤러리</a>
-      <a href="#news" class="drawer-link">자료실</a>
+      <a href="#gallery" class="drawer-link">자료실</a>
     </div>
   </div>
 
-  <!-- 메인 히어로 배너 -->
+  <!-- 메인 히어로 배너 (새 슬로건 및 말씀 적용) -->
   <section class="hero-banner">
-    <h1>말씀과 은혜가 넘치는 학동교회</h1>
-    <p>주님의 사랑으로 이웃을 섬기며 믿음의 공동체를 세워가는 여주 학동성결교회에 오신 것을 환영합니다.</p>
-    <div class="hero-btn-group">
-      <a href="#worship-info" class="hero-btn btn-primary">예배시간 안내</a>
-      <a href="#location-info" class="hero-btn btn-outline">오시는 길</a>
+    <div class="hero-inner">
+      <p class="hero-sub-title">학동성결교회 비전</p>
+      <h1 class="hero-main-slogan">"활짝 피어나는 교회"</h1>
+      <div class="hero-verse">
+        <strong>온 마음으로 주님을, 자신처럼 이웃을</strong><br>
+        <span style="font-size: 0.95rem; color: #6b7280; display: inline-block; margin-top: 0.4rem;">
+          "네 마음을 다하고 목숨을 다하고 뜻을 다하여 주 너의 하나님을 사랑하라 ... 네 이웃을 네 자신 같이 사랑하라"
+        </span>
+        <span class="hero-verse-cite">【마태복음 22:37-40】</span>
+      </div>
+      <div class="hero-btn-group">
+        <a href="#worship-info" class="hero-btn btn-primary">예배시간 안내</a>
+        <a href="#location-info" class="hero-btn btn-outline">오시는 길</a>
+      </div>
     </div>
   </section>
 
-  <!-- 사역 둘러보기 그리드 섹션 (요청 순서 반영) -->
+  <!-- 사역 둘러보기 그리드 섹션 -->
   <section class="section-container" id="gallery">
     <div class="section-title">
-      <h2>교회 사역 둘러보기</h2>
-      <p>학동성결교회의 사역과 예배 모습을 소개합니다.</p>
+      <h2>학동성결교회 사역 둘러보기</h2>
+      <p>학동성결교회의 사역과 비전을 함께 나눕니다.</p>
     </div>
 
     <div class="gallery-grid">
@@ -489,20 +537,10 @@
           <p>하나님을 영화롭게 하며 세상을 치유하는 복된 공동체입니다.</p>
         </div>
       </div>
-
-      <!-- 8. 오시는 길 -->
-      <div class="card" id="location-info">
-        <img src="https://images.unsplash.com/photo-1519817650390-64a93db51149?w=600&q=80" alt="교회 위치">
-        <div class="card-body">
-          <span class="card-tag">오시는 길</span>
-          <h3>교회 위치 안내</h3>
-          <p>경기도 여주시 현암3길 7-4에 위치해 있습니다.</p>
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- 예배안내 & 교회 위치 정보 박스 -->
+  <!-- 사역 둘러보기 바로 뒤에 배치된 예배안내 & 오시는 길 -->
   <section class="info-section">
     <div class="info-grid">
       <!-- 예배 시간 안내 -->
@@ -535,7 +573,7 @@
       </div>
 
       <!-- 찾아오시는 길 & 연락처 -->
-      <div class="info-card address-box">
+      <div class="info-card address-box" id="location-info">
         <h3>📍 찾아오시는 길 & 연락처</h3>
         <p><strong>교회 주소:</strong><br>경기도 여주시 현암3길 7-4 (기독교대한성결교회 학동교회)</p>
         <p><strong>대표 전화번호:</strong><br>
@@ -558,7 +596,7 @@
       </div>
       <div class="footer-right">
         <p>소속: 기독교대한성결교회</p>
-        <p>교회소식 및 사역 안내</p>
+        <p>비전: 활짝 피어나는 교회</p>
       </div>
     </div>
     <div class="footer-bottom">
