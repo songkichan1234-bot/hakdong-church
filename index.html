@@ -1,0 +1,99 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const header = document.getElementById("global-header");
+  if (!header) return;
+
+  // 프로젝트 경로 기준 설정 (하위 폴더 대응)
+  const isSubPage = window.location.pathname.includes('/pages/');
+  const root = isSubPage ? '../' : './';
+  const pagePath = isSubPage ? './' : './pages/';
+
+  header.innerHTML = `
+    <div class="nav-container">
+      <div class="logo"><a href="${root}index.html">학동성결교회</a></div>
+      <nav class="desktop-menu">
+        <div class="nav-item dropdown">
+          <a href="#">교회소개</a>
+          <div class="dropdown-content">
+            <a href="${pagePath}about-greeting.html">인사말</a>
+            <a href="${pagePath}about-servants.html">섬기는 사람들</a>
+            <a href="${pagePath}about-worship.html">예배안내</a>
+            <a href="${pagePath}about-map.html">오시는길</a>
+          </div>
+        </div>
+        <div class="nav-item"><a href="${pagePath}sermon.html">예배설교</a></div>
+        <div class="nav-item dropdown">
+          <a href="#">교회사역</a>
+          <div class="dropdown-content">
+            <a href="${pagePath}ministry-next.html">다음세대</a>
+            <a href="${pagePath}ministry-cell.html">구역모임</a>
+            <a href="${pagePath}ministry-train.html">양육훈련</a>
+            <a href="${pagePath}ministry-mission.html">전도및선교</a>
+          </div>
+        </div>
+        <div class="nav-item dropdown">
+          <a href="#">교회소식</a>
+          <div class="dropdown-content">
+            <a href="${pagePath}news-bulletin.html">주보보기</a>
+            <a href="${pagePath}news-notice.html">교회소식</a>
+            <a href="${pagePath}news-gallery.html">갤러리</a>
+            <a href="${pagePath}news-archive.html">자료실</a>
+          </div>
+        </div>
+      </nav>
+      <button class="hamburger-btn" id="menu-toggle" aria-label="메뉴 열기">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- 모바일 슬라이드 사이트맵 -->
+    <div class="mobile-drawer-overlay" id="drawer-overlay"></div>
+    <div class="mobile-drawer" id="mobile-drawer">
+      <div class="drawer-header">
+        <h3>사이트맵</h3>
+        <button class="close-btn" id="menu-close">&times;</button>
+      </div>
+      <div class="drawer-content">
+        <p class="drawer-cat">교회소개</p>
+        <a href="${pagePath}about-greeting.html">인사말</a>
+        <a href="${pagePath}about-servants.html">섬기는 사람들</a>
+        <a href="${pagePath}about-worship.html">예배안내</a>
+        <a href="${pagePath}about-map.html">오시는길</a>
+        
+        <p class="drawer-cat">예배설교</p>
+        <a href="${pagePath}sermon.html">예배설교 영상</a>
+
+        <p class="drawer-cat">교회사역</p>
+        <a href="${pagePath}ministry-next.html">다음세대</a>
+        <a href="${pagePath}ministry-cell.html">구역모임</a>
+        <a href="${pagePath}ministry-train.html">양육훈련</a>
+        <a href="${pagePath}ministry-mission.html">전도및선교</a>
+
+        <p class="drawer-cat">교회소식</p>
+        <a href="${pagePath}news-bulletin.html">주보보기</a>
+        <a href="${pagePath}news-notice.html">교회소식</a>
+        <a href="${pagePath}news-gallery.html">갤러리</a>
+        <a href="${pagePath}news-archive.html">자료실</a>
+      </div>
+    </div>
+  `;
+
+  // 햄버거 토글 동작
+  const toggleBtn = document.getElementById("menu-toggle");
+  const closeBtn = document.getElementById("menu-close");
+  const drawer = document.getElementById("mobile-drawer");
+  const overlay = document.getElementById("drawer-overlay");
+
+  const openDrawer = () => {
+    drawer.classList.add("active");
+    overlay.classList.add("active");
+  };
+
+  const closeDrawer = () => {
+    drawer.classList.remove("active");
+    overlay.classList.remove("active");
+  };
+
+  toggleBtn.addEventListener("click", openDrawer);
+  closeBtn.addEventListener("click", closeDrawer);
+  overlay.addEventListener("click", closeDrawer);
+});
