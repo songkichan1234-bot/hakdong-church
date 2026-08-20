@@ -4,37 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>기독교대한성결교회 학동교회</title>
-  <!-- Pretendard & 감성 손글씨 폰트(Nanum Myeongjo, Gowun Batang) 로드 -->
+  <!-- Pretendard & 감성 명조/바탕 폰트 로드 -->
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;750&family=Nanum+Myeongjo:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@700;800&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --primary-color: #1e3a8a;
-      --secondary-color: #d97706;
-      --text-main: #1f2937;
-      --text-muted: #4b5563;
-      --bg-light: #f8fafc;
-      --paper-bg: #fcfaf5;
+      --primary-color: #5c4d43;
+      --accent-brown: #7a6352;
+      --text-dark: #2c2724;
+      --text-muted: #6b645e;
+      --linen-bg: #f5f2eb;
+      --card-bg: #fbf9f5;
       --white: #ffffff;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      color: var(--text-main);
-      background-color: #fff;
+      color: var(--text-dark);
+      background-color: var(--linen-bg);
+      background-image: radial-gradient(#e6dfd5 1px, transparent 1px);
+      background-size: 24px 24px;
       line-height: 1.6;
+      word-break: keep-all;
     }
 
-    /* 상단 헤더 & PC 메뉴 */
+    /* 1. 상단 내비게이션 바 */
     header {
-      background: var(--white);
-      border-bottom: 1px solid #e2e8f0;
+      background: rgba(245, 242, 235, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e5dfd5;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
     .nav-container {
       max-width: 1200px;
@@ -45,37 +48,46 @@
       padding: 0.9rem 1.5rem;
     }
     .logo a {
-      font-weight: 800;
-      font-size: 1.35rem;
-      color: var(--primary-color);
-      text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 800;
+      font-size: 1.35rem;
+      letter-spacing: -0.5px;
     }
-    .logo span {
-      font-size: 0.85rem;
-      color: var(--secondary-color);
-      font-weight: 600;
-      border: 1px solid var(--secondary-color);
-      padding: 2px 6px;
-      border-radius: 4px;
+    .denomination-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid #dcd5ca;
+      padding: 2px;
+      object-fit: contain;
+    }
+    .logo-sub {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--accent-brown);
+      display: block;
+      line-height: 1;
+      margin-bottom: 2px;
     }
 
-    .desktop-menu { display: flex; gap: 1.8rem; list-style: none; }
+    .desktop-menu { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
     .nav-item { position: relative; }
     .nav-item > a {
       text-decoration: none;
-      color: var(--text-main);
+      color: var(--text-dark);
       font-weight: 600;
-      font-size: 1.02rem;
-      padding: 0.6rem 0.4rem;
+      font-size: 1rem;
+      padding: 0.5rem 0;
       display: block;
       transition: color 0.2s;
     }
-    .nav-item:hover > a { color: var(--primary-color); }
+    .nav-item:hover > a { color: var(--accent-brown); }
 
-    /* 드롭다운 메뉴 */
     .dropdown-content {
       display: none;
       position: absolute;
@@ -84,8 +96,8 @@
       transform: translateX(-50%);
       background: var(--white);
       min-width: 140px;
-      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
-      border: 1px solid #e2e8f0;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08);
+      border: 1px solid #e8e2d8;
       border-radius: 8px;
       padding: 0.5rem 0;
       list-style: none;
@@ -95,35 +107,26 @@
       padding: 0.5rem 1rem;
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.92rem;
-      transition: all 0.2s;
-      white-space: nowrap;
+      font-size: 0.9rem;
       text-align: center;
     }
-    .dropdown-content a:hover {
-      background: #f1f5f9;
-      color: var(--primary-color);
-      font-weight: 600;
-    }
+    .dropdown-content a:hover { background: #f7f4ee; color: var(--accent-brown); font-weight: 600; }
     .nav-item:hover .dropdown-content { display: block; }
 
-    /* 햄버거 버튼 (모바일) */
     .hamburger-btn {
-      display: none;
-      background: none;
+      background: #7a6352;
       border: none;
       cursor: pointer;
+      display: flex;
       flex-direction: column;
-      gap: 5px;
-      padding: 5px;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      width: 38px;
+      height: 38px;
+      border-radius: 6px;
     }
-    .hamburger-btn span {
-      width: 24px;
-      height: 2.5px;
-      background: var(--primary-color);
-      border-radius: 2px;
-      transition: 0.3s;
-    }
+    .hamburger-btn span { width: 20px; height: 2px; background: #fff; border-radius: 2px; }
 
     /* 모바일 슬라이드 드로어 */
     .mobile-drawer-overlay {
@@ -136,13 +139,9 @@
       transition: all 0.3s ease;
     }
     .mobile-drawer-overlay.active { opacity: 1; visibility: visible; }
-
     .mobile-drawer {
       position: fixed;
-      top: 0;
-      right: -320px;
-      width: 300px;
-      height: 100%;
+      top: 0; right: -320px; width: 300px; height: 100%;
       background: var(--white);
       z-index: 1000;
       box-shadow: -4px 0 15px rgba(0,0,0,0.1);
@@ -152,256 +151,305 @@
     }
     .mobile-drawer.active { right: 0; }
     .drawer-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 1.5rem;
-      background: var(--primary-color);
-      color: var(--white);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 1.5rem; background: var(--accent-brown); color: var(--white);
     }
-    .drawer-header h3 { font-size: 1.1rem; font-weight: 600; }
-    .close-btn {
-      background: none;
-      border: none;
-      color: var(--white);
-      font-size: 1.8rem;
-      cursor: pointer;
-      line-height: 1;
-    }
-    .drawer-content {
-      padding: 1.5rem;
-      overflow-y: auto;
-      flex: 1;
-    }
-    .drawer-cat {
-      font-weight: 700;
-      color: var(--primary-color);
-      font-size: 1rem;
-      margin: 1.2rem 0 0.5rem;
-      padding-bottom: 0.3rem;
-      border-bottom: 1px solid #e2e8f0;
-    }
+    .close-btn { background: none; border: none; color: #fff; font-size: 1.8rem; cursor: pointer; }
+    .drawer-content { padding: 1.5rem; overflow-y: auto; flex: 1; }
+    .drawer-cat { font-weight: 700; color: var(--accent-brown); font-size: 1rem; margin: 1.2rem 0 0.5rem; padding-bottom: 0.3rem; border-bottom: 1px solid #e5dfd5; }
     .drawer-cat:first-child { margin-top: 0; }
-    .drawer-content a {
-      display: block;
-      padding: 0.45rem 0.5rem;
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.95rem;
-    }
+    .drawer-content a { display: block; padding: 0.45rem 0.5rem; color: var(--text-muted); text-decoration: none; font-size: 0.95rem; }
 
-    /* 메인 히어로 배너 (제출해주신 비전 이미지 디자인 적용) */
-    .hero-banner {
-      background-color: var(--paper-bg);
-      background-image: radial-gradient(#e5e0d8 1px, transparent 1px);
-      background-size: 20px 20px;
-      border-bottom: 1px solid #ebdccb;
-      padding: 4.5rem 1.5rem;
-      text-align: center;
-      position: relative;
-    }
-    .hero-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      position: relative;
-    }
-    .hero-sub-title {
-      font-family: 'Gowun Batang', serif;
-      font-size: 1.15rem;
-      color: var(--secondary-color);
-      font-weight: 700;
-      letter-spacing: 2px;
-      margin-bottom: 0.8rem;
-    }
-    .hero-main-slogan {
-      font-family: 'Nanum Myeongjo', serif;
-      font-size: 2.8rem;
-      font-weight: 800;
-      color: #111827;
-      margin-bottom: 1.2rem;
-      letter-spacing: -1px;
-      line-height: 1.3;
-    }
-    .hero-verse {
-      font-family: 'Gowun Batang', serif;
-      font-size: 1.15rem;
-      color: #4b5563;
-      margin: 1rem auto 2rem;
-      line-height: 1.8;
-      max-width: 650px;
-      word-break: keep-all;
-    }
-    .hero-verse-cite {
-      display: block;
-      font-size: 0.95rem;
-      color: #6b7280;
-      margin-top: 0.5rem;
-    }
-    .hero-btn-group { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-    .hero-btn {
-      display: inline-block;
-      padding: 0.75rem 1.6rem;
-      border-radius: 30px;
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: 0.2s;
-    }
-    .btn-primary { background: var(--primary-color); color: var(--white); }
-    .btn-primary:hover { background: #172554; }
-    .btn-outline { border: 1px solid var(--primary-color); color: var(--primary-color); background: #fff; }
-    .btn-outline:hover { background: #f1f5f9; }
-
-    /* 사역 둘러보기 그리드 */
-    .section-container { max-width: 1200px; margin: 0 auto; padding: 4rem 1.5rem; }
-    .section-title { text-align: center; margin-bottom: 2.5rem; }
-    .section-title h2 { font-size: 1.8rem; color: var(--primary-color); font-weight: 800; }
-    .section-title p { color: var(--text-muted); margin-top: 0.4rem; font-size: 0.95rem; }
-
-    .gallery-grid {
+    /* 2. 메인 비전 배너 (첫번째 사진 스타일) */
+    .hero-section {
+      max-width: 1200px;
+      margin: 2rem auto 4rem;
+      padding: 2rem 1.5rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .vision-year {
+      font-size: 1.4rem;
+      color: #7a6e65;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    .vision-slogan-box {
+      margin-bottom: 2rem;
+    }
+    .vision-calligraphy {
+      font-family: 'Nanum Myeongjo', serif;
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: #3b322c;
+      line-height: 1.25;
+      letter-spacing: -1.5px;
+      margin-bottom: 1rem;
+    }
+    .vision-sub-text {
+      font-family: 'Gowun Batang', serif;
+      font-size: 1.3rem;
+      color: #574b42;
+      font-weight: 700;
+    }
+    .vision-verse-ref {
+      font-size: 1rem;
+      color: #8c827a;
+      font-weight: 600;
+      margin-top: 0.8rem;
+    }
+    .hero-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .btn-vision {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.75rem 1.4rem;
+      background: var(--accent-brown);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: 0.2s;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.06);
+    }
+    .btn-vision:hover { background: #5c4a3d; transform: translateY(-2px); }
+    .btn-vision-outline {
+      background: #fff;
+      color: var(--accent-brown);
+      border: 1px solid var(--accent-brown);
+    }
+    .btn-vision-outline:hover { background: #f2eee7; }
+
+    /* 메인 우측 아치형(돔형) 이미지 */
+    .hero-arch-card {
+      width: 100%;
+      height: 380px;
+      border-radius: 190px 190px 40px 40px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+      border: 6px solid #fff;
+    }
+    .hero-arch-card img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* 3. Worship Service (두번째 사진 원형 스타일) */
+    .worship-service-section {
+      max-width: 1200px;
+      margin: 0 auto 5rem;
+      padding: 0 1.5rem;
+      text-align: center;
+    }
+    .section-header-en { font-size: 2.2rem; font-weight: 800; color: #433932; letter-spacing: -0.5px; }
+    .section-header-sub { font-size: 1rem; color: #82786f; margin-top: 0.3rem; margin-bottom: 3rem; }
+
+    .circle-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+    .circle-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+    }
+    .circle-img-wrap {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      border: 4px solid #fff;
+      transition: transform 0.3s ease;
+    }
+    .circle-card:hover .circle-img-wrap { transform: scale(1.04); }
+    .circle-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .circle-img-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.35);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+    .circle-info { margin-top: 1.2rem; }
+    .circle-info h4 { font-size: 1.15rem; color: #2e2823; font-weight: 700; }
+    .circle-info p { font-size: 0.88rem; color: #786f67; margin-top: 0.3rem; }
+
+    /* 4. About Our Church (세번째 사진 스타일) */
+    .about-church-section {
+      max-width: 1200px;
+      margin: 0 auto 5rem;
+      padding: 0 1.5rem;
+      text-align: center;
+    }
+    .rounded-banner-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 1.5rem;
     }
-    .card {
-      background: var(--white);
-      border-radius: 12px;
+    .banner-card {
+      position: relative;
+      height: 190px;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-      border: 1px solid #e2e8f0;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
-    .card img { width: 100%; height: 180px; object-fit: cover; }
-    .card-body { padding: 1.2rem; }
-    .card-tag { font-size: 0.75rem; color: var(--secondary-color); font-weight: 700; text-transform: uppercase; }
-    .card-body h3 { font-size: 1.1rem; margin: 0.3rem 0 0.5rem; color: var(--text-main); }
-    .card-body p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; }
-
-    /* 교회 정보 안내 박스 (사역 둘러보기 바로 밑으로 배치) */
-    .info-section {
-      background-color: var(--bg-light);
-      border-top: 1px solid #e2e8f0;
-      border-bottom: 1px solid #e2e8f0;
-    }
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 3.5rem 1.5rem;
-    }
-    .info-card {
-      background: var(--white);
-      padding: 2rem;
-      border-radius: 12px;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-    }
-    .info-card h3 {
-      font-size: 1.2rem;
-      color: var(--primary-color);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .info-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
-    .info-table td { padding: 0.6rem 0; border-bottom: 1px dashed #e2e8f0; }
-    .info-table td:last-child { text-align: right; font-weight: 600; color: var(--primary-color); }
-    .address-box p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.6rem; }
-    .address-box strong { color: var(--text-main); }
-    .tel-link {
-      display: inline-block;
-      margin-top: 0.5rem;
-      color: var(--primary-color);
-      font-weight: 700;
-      font-size: 1.15rem;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.06);
       text-decoration: none;
+      cursor: pointer;
     }
+    .banner-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .banner-card:hover img { transform: scale(1.05); }
+    .banner-card-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0.2));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      padding: 1rem;
+    }
+    .banner-card-overlay h3 { font-size: 1.25rem; letter-spacing: 2px; font-weight: 700; }
+    .banner-card-overlay p { font-size: 0.9rem; opacity: 0.9; margin-top: 0.3rem; }
 
     /* 푸터 */
     footer {
-      background: #0f172a;
-      color: #94a3b8;
+      background: #2e2925;
+      color: #b5ada5;
       padding: 3rem 1.5rem 2rem;
       font-size: 0.9rem;
     }
-    .footer-container {
+    .footer-inner {
       max-width: 1200px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 2rem;
-      border-bottom: 1px solid #334155;
+      border-bottom: 1px solid #453e39;
       padding-bottom: 2rem;
     }
-    .footer-left h4 { color: var(--white); font-size: 1.1rem; margin-bottom: 0.8rem; }
-    .footer-left p { margin-bottom: 0.4rem; line-height: 1.6; }
-    .footer-bottom {
-      max-width: 1200px;
-      margin: 1.5rem auto 0;
-      text-align: center;
-      font-size: 0.8rem;
-      color: #64748b;
+    .footer-left h4 { color: #fff; font-size: 1.15rem; margin-bottom: 0.6rem; }
+    .footer-left p { margin-bottom: 0.3rem; }
+    .footer-bottom { max-width: 1200px; margin: 1.5rem auto 0; text-align: center; font-size: 0.8rem; color: #7f766e; }
+
+    /* 예배시간 상세 안내 팝업 모달 (Worship 클릭 시) */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 2000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
     }
+    .modal-overlay.active { display: flex; }
+    .modal-content {
+      background: #fff;
+      border-radius: 16px;
+      max-width: 600px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #666;
+    }
+    .modal-title { font-size: 1.4rem; color: var(--accent-brown); margin-bottom: 1.2rem; font-weight: 800; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; }
+    .worship-table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; font-size: 0.95rem; }
+    .worship-table th, .worship-table td { padding: 0.6rem 0.5rem; border-bottom: 1px solid #f0eee8; text-align: left; }
+    .worship-table th { background: #f8f6f0; color: #433932; }
+    .worship-table td:last-child { text-align: right; font-weight: 600; color: var(--accent-brown); }
 
     /* 모바일 미디어 쿼리 */
     @media (max-width: 850px) {
       .desktop-menu { display: none; }
-      .hamburger-btn { display: flex; }
-      .hero-main-slogan { font-size: 2rem; }
-      .hero-verse { font-size: 1rem; }
-      .section-container { padding: 3rem 1.2rem; }
+      .hero-section { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
+      .vision-calligraphy { font-size: 2.3rem; }
+      .hero-links { justify-content: center; }
+      .hero-arch-card { height: 300px; max-width: 320px; margin: 0 auto; }
+      .circle-img-wrap { width: 160px; height: 160px; }
+      .banner-card { height: 160px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- 상단 헤더 -->
+  <!-- 1. 상단 헤더 -->
   <header>
     <div class="nav-container">
       <div class="logo">
-        <a href="#">학동성결교회 <span>기성</span></a>
+        <a href="#">
+          <svg class="denomination-badge" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="48" fill="#1b5e20" stroke="#fbc02d" stroke-width="3"/>
+            <path d="M50 15 L50 85 M25 38 L75 38" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+            <path d="M50 25 Q35 50 50 70 Q65 50 50 25Z" fill="#ffeb3b" opacity="0.85"/>
+          </svg>
+          <div>
+            <span class="logo-sub">기독교대한성결교회</span>
+            학동교회
+          </div>
+        </a>
       </div>
       
       <!-- PC 메뉴 -->
       <ul class="desktop-menu">
         <li class="nav-item">
-          <a href="#about">교회소개</a>
+          <a href="#about-church">교회소개</a>
           <ul class="dropdown-content">
-            <li><a href="#about">인사말</a></li>
-            <li><a href="#about">섬기는 사람들</a></li>
-            <li><a href="#worship-info">예배안내</a></li>
-            <li><a href="#location-info">오시는길</a></li>
+            <li><a href="#pastor-greeting">인사말</a></li>
+            <li><a href="#worship-schedule" onclick="openWorshipModal()">예배안내</a></li>
+            <li><a href="#location-map">오시는길</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a href="#sermon-section">예배설교</a></li>
+        <li class="nav-item">
+          <a href="#ministry">교회사역</a>
+          <ul class="dropdown-content">
+            <li><a href="#about-church">다음세대</a></li>
+            <li><a href="#about-church">구역모임</a></li>
+            <li><a href="#about-church">양육훈련</a></li>
+            <li><a href="#about-church">전도및선교</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a href="#worship-section">예배설교</a>
-        </li>
-        <li class="nav-item">
-          <a href="#ministry-nextgen">교회사역</a>
+          <a href="#about-church">교회소식</a>
           <ul class="dropdown-content">
-            <li><a href="#ministry-nextgen">다음세대</a></li>
-            <li><a href="#ministry-train">양육훈련</a></li>
-            <li><a href="#ministry-mission">전도및선교</a></li>
-            <li><a href="#ministry-cell">구역모임</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a href="#gallery">교회소식</a>
-          <ul class="dropdown-content">
-            <li><a href="#gallery">주보보기</a></li>
-            <li><a href="#gallery">교회소식</a></li>
-            <li><a href="#gallery">갤러리</a></li>
-            <li><a href="#gallery">자료실</a></li>
+            <li><a href="#worship-service">주보보기</a></li>
+            <li><a href="#about-church">갤러리</a></li>
           </ul>
         </li>
       </ul>
 
-      <!-- 햄버거 버튼 -->
+      <!-- 모바일 햄버거 메뉴 버튼 -->
       <button class="hamburger-btn" id="menu-toggle" aria-label="메뉴 열기">
         <span></span>
         <span></span>
@@ -414,189 +462,215 @@
   <div class="mobile-drawer-overlay" id="drawer-overlay"></div>
   <div class="mobile-drawer" id="mobile-drawer">
     <div class="drawer-header">
-      <h3>전체메뉴 (사이트맵)</h3>
+      <h3>사이트맵</h3>
       <button class="close-btn" id="menu-close">&times;</button>
     </div>
     <div class="drawer-content">
       <p class="drawer-cat">교회소개</p>
-      <a href="#about" class="drawer-link">인사말</a>
-      <a href="#about" class="drawer-link">섬기는 사람들</a>
-      <a href="#worship-info" class="drawer-link">예배안내</a>
-      <a href="#location-info" class="drawer-link">오시는길</a>
+      <a href="#pastor-greeting" class="drawer-link">담임목사 인사말</a>
+      <a href="javascript:openWorshipModal()" class="drawer-link">예배안내 시간표</a>
+      <a href="#location-map" class="drawer-link">오시는길</a>
 
       <p class="drawer-cat">예배설교</p>
-      <a href="#worship-section" class="drawer-link">주일예배 및 설교</a>
+      <a href="#sermon-section" class="drawer-link">최근 주일예배 설교</a>
 
       <p class="drawer-cat">교회사역</p>
-      <a href="#ministry-nextgen" class="drawer-link">다음세대</a>
-      <a href="#ministry-train" class="drawer-link">양육훈련</a>
-      <a href="#ministry-mission" class="drawer-link">전도 및 선교</a>
-      <a href="#ministry-cell" class="drawer-link">구역모임</a>
+      <a href="#about-church" class="drawer-link">다음세대 (교회학교)</a>
+      <a href="#about-church" class="drawer-link">양육 및 훈련</a>
+      <a href="#about-church" class="drawer-link">선교 및 전도</a>
 
       <p class="drawer-cat">교회소식</p>
-      <a href="#gallery" class="drawer-link">주보보기</a>
-      <a href="#gallery" class="drawer-link">교회소식 및 공지</a>
-      <a href="#gallery" class="drawer-link">갤러리</a>
-      <a href="#gallery" class="drawer-link">자료실</a>
+      <a href="#worship-service" class="drawer-link">주보보기</a>
+      <a href="#about-church" class="drawer-link">포토 갤러리</a>
     </div>
   </div>
 
-  <!-- 메인 히어로 배너 (새 슬로건 및 말씀 적용) -->
-  <section class="hero-banner">
-    <div class="hero-inner">
-      <p class="hero-sub-title">학동성결교회 비전</p>
-      <h1 class="hero-main-slogan">"활짝 피어나는 교회"</h1>
-      <div class="hero-verse">
-        <strong>온 마음으로 주님을, 자신처럼 이웃을</strong><br>
-        <span style="font-size: 0.95rem; color: #6b7280; display: inline-block; margin-top: 0.4rem;">
-          "네 마음을 다하고 목숨을 다하고 뜻을 다하여 주 너의 하나님을 사랑하라 ... 네 이웃을 네 자신 같이 사랑하라"
-        </span>
-        <span class="hero-verse-cite">【마태복음 22:37-40】</span>
+  <!-- 2. 메인 비전 배너 (첫번째 사진 스타일) -->
+  <section class="hero-section">
+    <div>
+      <p class="vision-year">2026 표어</p>
+      <div class="vision-slogan-box">
+        <h1 class="vision-calligraphy">"활짝 피어나는 교회"</h1>
+        <p class="vision-sub-text">온 마음으로 주님을, 자신처럼 이웃을</p>
+        <p class="vision-verse-ref">수 1:8-9 · 마 22:37-40</p>
       </div>
-      <div class="hero-btn-group">
-        <a href="#worship-info" class="hero-btn btn-primary">예배시간 안내</a>
-        <a href="#location-info" class="hero-btn btn-outline">오시는 길</a>
+
+      <!-- 담임목사 인사말 및 최근 예배설교 연동 바로가기 버튼 -->
+      <div class="hero-links" id="pastor-greeting">
+        <a href="#sermon-section" class="btn-vision">
+          ▶ 최근 예배설교 영상보기
+        </a>
+        <a href="javascript:openWorshipModal()" class="btn-vision btn-vision-outline">
+          📖 예배시간 안내
+        </a>
+      </div>
+    </div>
+
+    <!-- 우측 아치형 사진 -->
+    <div class="hero-arch-card">
+      <img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?w=800&q=80" alt="은혜의 십자가">
+    </div>
+  </section>
+
+  <!-- 3. Worship Service (두번째 사진 원형 스타일) -->
+  <section class="worship-service-section" id="worship-service">
+    <h2 class="section-header-en">Worship Service</h2>
+    <p class="section-header-sub">학동성결교회의 최신예배와 소식을 확인하세요</p>
+
+    <div class="circle-grid">
+      <!-- 주일말씀 (설교 연동) -->
+      <a href="#sermon-section" class="circle-card" id="sermon-section">
+        <div class="circle-img-wrap">
+          <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=500&q=80" alt="주일말씀">
+          <div class="circle-img-overlay">주일말씀</div>
+        </div>
+        <div class="circle-info">
+          <h4>교회가 희망이다</h4>
+          <p>학동성결교회 주일예배 설교</p>
+        </div>
+      </a>
+
+      <!-- 날마다 묵상 -->
+      <a href="#worship-service" class="circle-card">
+        <div class="circle-img-wrap">
+          <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500&q=80" alt="성경 묵상">
+          <div class="circle-img-overlay">날마다</div>
+        </div>
+        <div class="circle-info">
+          <h4>날마다 은혜 묵상</h4>
+          <p>생명의 삶 말씀 나눔</p>
+        </div>
+      </a>
+
+      <!-- 주보보기 -->
+      <a href="#worship-service" class="circle-card">
+        <div class="circle-img-wrap">
+          <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=500&q=80" alt="주보">
+          <div class="circle-img-overlay">주보</div>
+        </div>
+        <div class="circle-info">
+          <h4>이번 주 교회 주보</h4>
+          <p>예배 순서 및 교회 소식</p>
+        </div>
+      </a>
+
+      <!-- 성가대 찬양 -->
+      <a href="#worship-service" class="circle-card">
+        <div class="circle-img-wrap">
+          <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=500&q=80" alt="성가대">
+          <div class="circle-img-overlay">성가대</div>
+        </div>
+        <div class="circle-info">
+          <h4>기쁨의 노래 알렐루야</h4>
+          <p>학동교회 찬양대 찬양</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- 4. About Our Church (세번째 사진 스타일 하단 썸네일 그리드) -->
+  <section class="about-church-section" id="about-church">
+    <h2 class="section-header-en">About Our Church</h2>
+    <p class="section-header-sub">학동성결교회를 소개합니다</p>
+
+    <div class="rounded-banner-grid">
+      <!-- 1. WELCOME -->
+      <div class="banner-card">
+        <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=600&q=80" alt="WELCOME">
+        <div class="banner-card-overlay">
+          <h3>WELCOME</h3>
+          <p>학동교회 새가족을 환영합니다</p>
+        </div>
+      </div>
+
+      <!-- 2. WORSHIP (클릭 시 상세 시간표 팝업) -->
+      <div class="banner-card" onclick="openWorshipModal()">
+        <img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?w=600&q=80" alt="WORSHIP">
+        <div class="banner-card-overlay">
+          <h3>WORSHIP</h3>
+          <p>예배시간과 장소를 안내합니다 (클릭)</p>
+        </div>
+      </div>
+
+      <!-- 3. LOCATION -->
+      <div class="banner-card" id="location-map" onclick="alert('주소: 경기도 여주시 현암3길 7-4\n대표전화: 031-886-1004')">
+        <img src="https://images.unsplash.com/photo-1519817650390-64a93db51149?w=600&q=80" alt="LOCATION">
+        <div class="banner-card-overlay">
+          <h3>LOCATION</h3>
+          <p>학동교회 찾아오시는 길</p>
+        </div>
+      </div>
+
+      <!-- 4. GALLERY -->
+      <div class="banner-card">
+        <img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=600&q=80" alt="GALLERY">
+        <div class="banner-card-overlay">
+          <h3>GALLERY</h3>
+          <p>학동교회 포토앨범</p>
+        </div>
+      </div>
+
+      <!-- 5. SCHOOL -->
+      <div class="banner-card" onclick="openWorshipModal()">
+        <img src="https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?w=600&q=80" alt="SCHOOL">
+        <div class="banner-card-overlay">
+          <h3>SCHOOL</h3>
+          <p>학동교회 교회학교</p>
+        </div>
+      </div>
+
+      <!-- 6. EDUCATION -->
+      <div class="banner-card">
+        <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=600&q=80" alt="EDUCATION">
+        <div class="banner-card-overlay">
+          <h3>EDUCATION</h3>
+          <p>학동교회 양육/교육</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 사역 둘러보기 그리드 섹션 -->
-  <section class="section-container" id="gallery">
-    <div class="section-title">
-      <h2>학동성결교회 사역 둘러보기</h2>
-      <p>학동성결교회의 사역과 비전을 함께 나눕니다.</p>
+  <!-- 5. 예배시간 상세 안내 모달 창 (요청하신 시간표 100% 반영) -->
+  <div class="modal-overlay" id="worshipModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeWorshipModal()">&times;</button>
+      <h3 class="modal-title">📖 학동교회 예배 시간 안내</h3>
+      
+      <p style="font-weight: 700; color: #5c4d43; margin-bottom: 0.5rem;">[장년 예배]</p>
+      <table class="worship-table">
+        <tbody>
+          <tr><td>주일 대예배 (1부)</td><td>주일 오전 09:00 (본당)</td></tr>
+          <tr><td>주일 대예배 (2부)</td><td>주일 오전 11:00 (본당)</td></tr>
+          <tr><td>주일 오후예배</td><td>주일 오후 01:30 (본당)</td></tr>
+          <tr><td>수요 저녁예배</td><td>수요일 오후 08:00 (본당)</td></tr>
+          <tr><td>새벽 기도회</td><td>월~금 오전 05:00 (본당)</td></tr>
+        </tbody>
+      </table>
+
+      <p style="font-weight: 700; color: #5c4d43; margin-bottom: 0.5rem;">[교회학교 예배]</p>
+      <table class="worship-table">
+        <tbody>
+          <tr><td>영아부</td><td>주일 오전 11:00 (영아실)</td></tr>
+          <tr><td>유치부</td><td>주일 오전 11:00 (유치부실)</td></tr>
+          <tr><td>주일학교</td><td>주일 오전 11:00 (쉐마관)</td></tr>
+          <tr><td>중고등부</td><td>주일 오후 01:30 (본당)</td></tr>
+          <tr><td>청년부</td><td>주일 오후 01:30 (본당)</td></tr>
+        </tbody>
+      </table>
     </div>
-
-    <div class="gallery-grid">
-      <!-- 1. 예배 -->
-      <div class="card" id="worship-section">
-        <img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?w=600&q=80" alt="예배">
-        <div class="card-body">
-          <span class="card-tag">예배 중심</span>
-          <h3>예배</h3>
-          <p>하나님의 임재와 감격이 살아있는 거룩한 예배의 자리입니다.</p>
-        </div>
-      </div>
-
-      <!-- 2. 다음세대 -->
-      <div class="card" id="ministry-nextgen">
-        <img src="https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?w=600&q=80" alt="다음세대">
-        <div class="card-body">
-          <span class="card-tag">교회학교</span>
-          <h3>다음세대</h3>
-          <p>말씀 안에서 바르게 자라나는 유초등부와 청소년부 공동체입니다.</p>
-        </div>
-      </div>
-
-      <!-- 3. 양육훈련 -->
-      <div class="card" id="ministry-train">
-        <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=80" alt="양육훈련">
-        <div class="card-body">
-          <span class="card-tag">제자도</span>
-          <h3>양육훈련</h3>
-          <p>성경공부와 훈련을 통해 성숙한 그리스도의 제자로 성장합니다.</p>
-        </div>
-      </div>
-
-      <!-- 4. 전도 및 선교 -->
-      <div class="card" id="ministry-mission">
-        <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=600&q=80" alt="전도 및 선교">
-        <div class="card-body">
-          <span class="card-tag">이웃 사랑</span>
-          <h3>전도 및 선교</h3>
-          <p>여주 지역사회 섬김과 국내외 복음 전파에 힘쓰고 있습니다.</p>
-        </div>
-      </div>
-
-      <!-- 5. 구역모임 -->
-      <div class="card" id="ministry-cell">
-        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80" alt="구역모임">
-        <div class="card-body">
-          <span class="card-tag">소그룹 공동체</span>
-          <h3>구역모임</h3>
-          <p>가정마다 모여 삶을 나누고 서로를 위해 뜨겁게 중보합니다.</p>
-        </div>
-      </div>
-
-      <!-- 6. 환영과 교제 -->
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&q=80" alt="환영과 교제">
-        <div class="card-body">
-          <span class="card-tag">사랑의 교제</span>
-          <h3>환영과 나눔</h3>
-          <p>처음 방문하신 분들도 따뜻한 가족처럼 편안히 환영합니다.</p>
-        </div>
-      </div>
-
-      <!-- 7. 목회 비전 (담임목사 인사말) -->
-      <div class="card" id="about">
-        <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&q=80" alt="담임목사 인사말">
-        <div class="card-body">
-          <span class="card-tag">목회 비전</span>
-          <h3>담임목사 인사말</h3>
-          <p>하나님을 영화롭게 하며 세상을 치유하는 복된 공동체입니다.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 사역 둘러보기 바로 뒤에 배치된 예배안내 & 오시는 길 -->
-  <section class="info-section">
-    <div class="info-grid">
-      <!-- 예배 시간 안내 -->
-      <div class="info-card" id="worship-info">
-        <h3>📖 예배 시간 안내</h3>
-        <table class="info-table">
-          <tbody>
-            <tr>
-              <td>주일 오전 대예배</td>
-              <td>오전 11:00</td>
-            </tr>
-            <tr>
-              <td>주일 오후 찬양예배</td>
-              <td>오후 02:00</td>
-            </tr>
-            <tr>
-              <td>교회학교 (주일)</td>
-              <td>오전 09:30</td>
-            </tr>
-            <tr>
-              <td>수요 기도회</td>
-              <td>오후 07:30</td>
-            </tr>
-            <tr>
-              <td>새벽 기도회 (월~금)</td>
-              <td>오전 05:30</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- 찾아오시는 길 & 연락처 -->
-      <div class="info-card address-box" id="location-info">
-        <h3>📍 찾아오시는 길 & 연락처</h3>
-        <p><strong>교회 주소:</strong><br>경기도 여주시 현암3길 7-4 (기독교대한성결교회 학동교회)</p>
-        <p><strong>대표 전화번호:</strong><br>
-          <a href="tel:031-886-1004" class="tel-link">📞 031) 886-1004</a>
-        </p>
-        <p style="margin-top: 1rem; font-size: 0.85rem; color: #64748b;">
-          * 모바일에서 전화번호를 터치하시면 바로 통화로 연결됩니다.
-        </p>
-      </div>
-    </div>
-  </section>
+  </div>
 
   <!-- 푸터 -->
   <footer>
-    <div class="footer-container">
+    <div class="footer-inner">
       <div class="footer-left">
         <h4>기독교대한성결교회 학동교회</h4>
         <p>주소: 경기도 여주시 현암3길 7-4</p>
-        <p>전화: <a href="tel:031-886-1004" style="color: #cbd5e1; text-decoration: none;">031) 886-1004</a></p>
+        <p>전화: <a href="tel:031-886-1004" style="color: #d8cfc6; text-decoration: none;">031) 886-1004</a></p>
       </div>
-      <div class="footer-right">
-        <p>소속: 기독교대한성결교회</p>
-        <p>비전: 활짝 피어나는 교회</p>
+      <div>
+        <p>2026 표어: "활짝 피어나는 교회"</p>
+        <p>교단: 기독교대한성결교회 (기성)</p>
       </div>
     </div>
     <div class="footer-bottom">
@@ -604,35 +678,40 @@
     </div>
   </footer>
 
-  <!-- 모바일 슬라이드 드로어 스크립트 -->
+  <!-- 자바스크립트 -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const toggleBtn = document.getElementById("menu-toggle");
-      const closeBtn = document.getElementById("menu-close");
-      const drawer = document.getElementById("mobile-drawer");
-      const overlay = document.getElementById("drawer-overlay");
-      const drawerLinks = document.querySelectorAll(".drawer-link");
+    const toggleBtn = document.getElementById("menu-toggle");
+    const closeBtn = document.getElementById("menu-close");
+    const drawer = document.getElementById("mobile-drawer");
+    const overlay = document.getElementById("drawer-overlay");
+    const drawerLinks = document.querySelectorAll(".drawer-link");
 
-      const openDrawer = () => {
-        drawer.classList.add("active");
-        overlay.classList.add("active");
-        document.body.style.overflow = "hidden";
-      };
-
-      const closeDrawer = () => {
+    toggleBtn.addEventListener("click", () => {
+      drawer.classList.add("active");
+      overlay.classList.add("active");
+    });
+    closeBtn.addEventListener("click", () => {
+      drawer.classList.remove("active");
+      overlay.classList.remove("active");
+    });
+    overlay.addEventListener("click", () => {
+      drawer.classList.remove("active");
+      overlay.classList.remove("active");
+    });
+    drawerLinks.forEach(link => {
+      link.addEventListener("click", () => {
         drawer.classList.remove("active");
         overlay.classList.remove("active");
-        document.body.style.overflow = "";
-      };
-
-      toggleBtn.addEventListener("click", openDrawer);
-      closeBtn.addEventListener("click", closeDrawer);
-      overlay.addEventListener("click", closeDrawer);
-
-      drawerLinks.forEach(link => {
-        link.addEventListener("click", closeDrawer);
       });
     });
+
+    /* 예배시간 안내 팝업 함수 */
+    function openWorshipModal() {
+      document.getElementById('worshipModal').classList.add('active');
+    }
+    function closeWorshipModal() {
+      document.getElementById('worshipModal').classList.remove('active');
+    }
   </script>
 </body>
 </html>
